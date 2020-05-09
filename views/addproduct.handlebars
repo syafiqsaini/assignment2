@@ -1,0 +1,56 @@
+<div class="container mt-4">
+    {{#if errors}}
+        {{#each errors}}
+            <p class="alert alert-danger">{{this.msg}}</p>
+        {{/each}}
+    {{/if}}
+
+    <h2 class="mt-3">Add Product</h2>
+    <hr>
+
+    <form action="/products/add" method="post">
+        <div class="form-group">
+            <label for="">Title</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+        <div class="form-group" id="div-category">
+            <label for="">Category</label>
+            <input type="text" class="form-control mb-2" name="category" id="input-category">
+            <input type="button" class="btn btn-outline-secondary" onclick="removeCategory()" value="-" id="remove-button">
+            <input type="button" class="btn btn-outline-secondary" onclick="addCategory()" value="+">
+        </div>
+        <div class="form-group">
+            <label for="">Color</label>
+            <input type="text" class="form-control" name="color">
+        </div>
+        <div class="form-group">
+            <label for="">Quantity</label>
+            <input type="text" class="form-control" name="quantity">
+        </div>
+        <div class="form-group">
+            <label for="">etc</label>
+            <input type="text" class="form-control" name="etc" placeholder="Enter description">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+</div>
+
+<script>
+    function addCategory(){
+        let category = document.createElement("input");
+        category.type = "text";
+        category.className = "form-control mb-2";
+        category.name = "category";
+
+        let div = document.getElementById("div-category");
+        let removebtn = document.getElementById("remove-button");
+        div.insertBefore(category, removebtn);
+    }
+    function removeCategory(){
+        let btn = document.getElementById('remove-button');
+        let input = document.getElementById('input-category');
+        if(btn.previousElementSibling.id !== input.id){
+           btn.previousElementSibling.remove(); 
+        };
+    }
+</script>

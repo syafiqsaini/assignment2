@@ -1,0 +1,15 @@
+<div class="container">
+    <h2 class="mt-3">Search Products</h2>
+    <hr>
+
+    <ul class="list-group">
+        {{#each products}}
+            <li class="list-group-item">
+                <a href='/products/{{_id}}'>{{title}}</a>
+                <a href="#" data-id="{{_id}}" class="btn btn-outline-danger btn-sm float-right delete-product">Delete</a>
+                <a class="btn btn-outline-success btn-sm float-right" href="/products/edit/{{_id}}" style="text-decoration:none">Edit</a>
+                <a class="btn btn-outline-default btn-sm float-right" href="/products/{{_id}}" style="text-decoration:none">View</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>
